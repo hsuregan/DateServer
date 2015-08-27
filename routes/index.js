@@ -67,6 +67,23 @@ router.put('/collections/:name/:id', function(req, res) {
 	// });
 });
 
+/*
+localhost:3000/calculate_distance/:user1/:user2
+
+router.get('/calculate_distance/:user1/:user2', function(req, res) {
+	//query the database for user1 
+	//query the database for user2
+
+	//var x = perform function on user1[long, lat] and user2[long, lat] == distance
+
+	//x -> JSON
+	//return JSON
+}
+
+*/
+
+
+
 //example in the terminal:
 //curl -H "Content-Type: application/json" -X POST -d '{"title":"Hello World", "director":"xoreganox"}' http://localhost:3000/collections/moviecollection
 router.post('/collections/:name', function(req, res) {
