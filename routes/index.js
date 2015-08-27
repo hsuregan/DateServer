@@ -45,8 +45,26 @@ router.get('/collections/:name/:id', function(req, res) {
 	console.log(id);
 	collection.findById(id, function(err, doc){
 		res.send(400, doc);
-
 	});
+});
+
+//get the object by id
+router.put('/collections/:name/:id', function(req, res) {
+	var db = req.db;
+	var collection = db.get(req.params.name);
+	var object = req.body;
+	console.log(object);
+
+	var id = req.params.id;
+
+	collection.findAndModify({ _id: id }, { $set: object });
+		res.status(201).send(object);
+
+
+	// collection.findById(id, function(err, doc){
+	// 	res.send(400, doc);
+
+	// });
 });
 
 //example in the terminal:
@@ -66,12 +84,6 @@ router.post('/collections/:name', function(req, res) {
 });
 
 
-router.put('/:collection/:name', function(req, res){
-	var  db = req.db;
-	var object = req.body;
-	console.log(body);
-
-});
 
 
 module.exports = router;
