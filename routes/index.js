@@ -83,16 +83,13 @@ router.get('/calculate_distance/:name/:id1/:id2', function(req, res) {
 		//get  user2
 		collection.findById(id_2, function(err, obj){
 			user2 = obj; 
-			console.log(user1);
-			console.log(user2);
 
+			//calculate distance between two users
 			var dist = Math.pow(user1["long"] - user2["long"],2) - Math.pow(user1["lat"] - user2["lat"],2); //+ (user1.lat - user2.lat)^2;
 			dist = Math.sqrt(Math.abs(dist));
 			
-			console.log(dist);
-			var val = { "dist":dist};
-
-			var ugh = [user1, user2];
+			//construct JSON object
+			var val = { "dist" : dist};
 			res.send(400, val);
 		});		
 	});
